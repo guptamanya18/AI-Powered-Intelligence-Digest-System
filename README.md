@@ -26,18 +26,38 @@ AI-Powered Intelligence Digest System/
 │
 ├── src/
 │ ├── services/
-│ │ ├── ingestion.py
+│ │ ├── config.py
 │ │ ├── database.py
 │ │ ├── email_service.py
+│ │ ├── embedding_service.py
+│ │ ├── filtering.py
+│ │ ├── ingestion.py
+│ │ ├── vector_store.py
 │ │ ├── telegram_service.py
 │ │ ├── scheduler_service.py
 │ │ └── llm_service.py
-│ │
+|
+│ ├── agents/
+│ │ ├── evaluator_agent.py
+│ │ ├── genai_news_agent.py
+│ │ ├── reflection_agent.py
+│ │ └── telegram_service.py
+
+│ ├── models/
+│ │ ├── evaluation.py
+│ │ └── schema.py
+
 │ ├── tools/
+│ │ ├── email_html.py
+│ │ └── loggers.py
+
+│ ├── utils/
+│ │ ├── source_base.py
 │ │ └── hackernews.py
 │ │
-│ └── workflows/
-│ └── daily_summary.py
+│ ├── workflows/
+│ | ├── daily_summary.py
+│ │ └── digest_workflow.py
 │
 └── README.md
 
@@ -81,5 +101,100 @@ AI-Powered Intelligence Digest System/
 
 ---
 
+## 🚀 Installation
 
+1️⃣ Clone the Repository
+git clone <repository-url>
+cd AI-Powered-Intelligence-Digest-System
+
+2️⃣ Create and Activate Virtual Environment
+python -m venv venv
+venv\Scripts\activate  
+
+3️⃣ Install Dependencies
+pip install -r requirements.txt
+🔐 Environment Variables
+Create a .env file in the project root:
+
+# Email Configuration
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your_email@gmail.com
+SMTP_PASS=your_app_password
+EMAIL_TO=recipient_email@gmail.com
+
+# Telegram Configuration
+TELEGRAM_BOT_TOKEN=your_bot_token
+TELEGRAM_CHAT_ID=your_chat_id
+
+# Scheduler
+SCHEDULE_TIME=09:20
+
+# Feature Toggles
+ENABLE_EMAIL=true
+ENABLE_TELEGRAM=true
+
+▶️ Running the Application
+Run Once (Manual Mode)
+python run.py genai-news
+
+Run with Scheduler
+python run.py scheduler
+
+🧠 Summarization Logic
+Neutral and factual tone
+
+Grouped news sections
+
+Bullet-point formatting
+
+No hype, emojis, or promotional language
+
+Designed for professional audiences
+
+📬 Output Channels
+Email
+Clear subject line
+
+Section-based layout
+
+Bullet-point summaries
+
+Telegram
+Compact, readable formatting
+
+Bold section titles
+
+Optimized for daily reading
+
+🔄 Extensibility
+This system can be easily extended to:
+
+Add new news sources or APIs
+
+Support additional delivery channels (Slack, Discord)
+
+Replace or upgrade the LLM
+
+Store historical summaries
+
+Add analytics or sentiment analysis
+
+🛡️ Reliability
+Fully asynchronous execution
+
+Graceful handling of empty or duplicate data
+
+Robust error handling and logging
+
+Safe retry mechanisms for external services
+
+👩‍💻 Author
+Manya Gupta
+AI / ML Engineering Student
+Focused on building real-world AI systems that integrate automation, LLMs, and production-grade delivery pipelines.
+
+📄 License
+This project is intended for educational and personal use.
+Commercial usage should comply with all third-party service terms and licenses.
 
