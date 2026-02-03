@@ -18,54 +18,51 @@ The system is designed with a strong focus on:
 ---
 
 ## 🏗️ Project Structure
-'''
+
+## 🏗️ Project Structure
 
 AI-Powered-Intelligence-Digest-System/
-│
 ├── run.py
 ├── .env
 ├── requirements.txt
 │
 ├── src/
-│ ├── services/
-│ │ ├── config.py
-│ │ ├── database.py
-│ │ ├── email_service.py
-│ │ ├── embedding_service.py
-│ │ ├── filtering.py
-│ │ ├── ingestion.py
-│ │ ├── vector_store.py
-│ │ ├── telegram_service.py
-│ │ ├── scheduler_service.py
-│ │ └── llm_service.py
-│ │
-│ ├── agents/
-│ │ ├── evaluator_agent.py
-│ │ ├── genai_news_agent.py
-│ │ ├── reflection_agent.py
-│ │ └── telegram_service.py
-│ │
-│ ├── models/
-│ │ ├── evaluation.py
-│ │ └── schema.py
-│ │
-│ ├── tools/
-│ │ ├── email_html.py
-│ │ └── loggers.py
-│ │
-│ ├── utils/
-│ │ ├── source_base.py
-│ │ └── hackernews.py
-│ │
-│ └── workflows/
-│ ├── daily_summary.py
-│ └── digest_workflow.py
+│   ├── services/
+│   │   ├── config.py
+│   │   ├── database.py
+│   │   ├── email_service.py
+│   │   ├── embedding_service.py
+│   │   ├── filtering.py
+│   │   ├── ingestion.py
+│   │   ├── vector_store.py
+│   │   ├── telegram_service.py
+│   │   ├── scheduler_service.py
+│   │   └── llm_service.py
+│   │
+│   ├── agents/
+│   │   ├── evaluator_agent.py
+│   │   ├── genai_news_agent.py
+│   │   ├── reflection_agent.py
+│   │   └── telegram_service.py
+│   │
+│   ├── models/
+│   │   ├── evaluation.py
+│   │   └── schema.py
+│   │
+│   ├── tools/
+│   │   ├── email_html.py
+│   │   └── loggers.py
+│   │
+│   ├── utils/
+│   │   ├── source_base.py
+│   │   └── hackernews.py
+│   │
+│   └── workflows/
+│       ├── daily_summary.py
+│       └── digest_workflow.py
 │
 └── README.md
 
-
-
-'''
 
 ---
 
