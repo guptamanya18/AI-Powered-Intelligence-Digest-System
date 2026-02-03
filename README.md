@@ -16,11 +16,9 @@ The system is designed with a strong focus on:
 - Real-world production readiness  
 
 ---
-
 ## 🏗️ Project Structure
 
-## 🏗️ Project Structure
-
+```
 AI-Powered-Intelligence-Digest-System/
 ├── run.py
 ├── .env
@@ -62,6 +60,7 @@ AI-Powered-Intelligence-Digest-System/
 │       └── digest_workflow.py
 │
 └── README.md
+```
 
 
 ---
