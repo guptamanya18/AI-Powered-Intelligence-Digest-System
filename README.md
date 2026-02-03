@@ -18,6 +18,7 @@ The system is designed with a strong focus on:
 ---
 
 ## 🏗️ Project Structure
+'''
 
 AI-Powered-Intelligence-Digest-System/
 │
@@ -62,6 +63,9 @@ AI-Powered-Intelligence-Digest-System/
 │
 └── README.md
 
+
+
+'''
 
 ---
 
@@ -122,14 +126,18 @@ SMTP_PORT=587
 SMTP_USER=your_email@gmail.com
 SMTP_PASS=your_app_password
 EMAIL_TO=recipient_email@gmail.com
+
 Telegram Configuration
 TELEGRAM_BOT_TOKEN=your_bot_token
 TELEGRAM_CHAT_ID=your_chat_id
+
 Scheduler
 SCHEDULE_TIME=09:20
+
 Feature Toggles
 ENABLE_EMAIL=true
 ENABLE_TELEGRAM=true
+
 ▶️ Running the Application
 Run Once (Manual Mode)
 python run.py genai-news
@@ -147,6 +155,7 @@ No hype, emojis, or promotional language
 Designed for professional audiences
 
 📬 Output Channels
+
 Email
 Clear subject line
 
