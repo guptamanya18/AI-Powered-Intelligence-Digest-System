@@ -1,6 +1,6 @@
 # 🧠 AI-Powered Intelligence Digest System
 
-An automated AI-driven system that ingests daily GenAI-related news, summarizes it using a Large Language Model (LLM), and delivers a clean, professional intelligence digest via Email and Telegram.
+An automated AI-driven system that ingests daily GenAI-related news, summarizes it using a Large Language Model (LLM), and delivers a clean, professional intelligence digest via Email and Telegram and PDF Reports.
 
 ---
 
@@ -35,6 +35,7 @@ AI-Powered-Intelligence-Digest-System/
 │   │   ├── vector_store.py
 │   │   ├── telegram_service.py
 │   │   ├── scheduler_service.py
+|   |   ├── pdf_report_service.py
 │   │   └── llm_service.py
 │   │
 │   ├── agents/
