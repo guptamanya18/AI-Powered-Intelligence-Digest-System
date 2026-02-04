@@ -7,3 +7,4 @@ faiss-cpu
 python-telegram-bot
 aiosmtplib
 requests
+reportlab

@@ -1,71 +1,33 @@
-import asyncio
-import os
-from dotenv import load_dotenv
-from src.utils.email_html import markdown_to_html
-
-
+from src.workflows.daily_summary import build_intelligence
 from src.services.ingestion import IngestionService
-from src.tools.hackernews import HackerNewsAdapter
-from src.services.database import Database
-from src.workflows.daily_summary import DailySummaryComposer
-from src.services.email_service import EmailService
 from src.services.telegram_service import TelegramService
-from src.services.scheduler_service import SchedulerService
+from src.services.email_service import EmailService
+from src.services.pdf_report_service import PDFReportService
+from src.tools.hackernews import HackerNewsAdapter
+import asyncio
 
-load_dotenv()
-
-async def run_digest(persona: str):
-    print("[INFO] AI-Powered Intelligence Digest System Started")
-    print(f"[INFO] Persona selected: {persona}")
-
-    ingestion = IngestionService(
-        adapters=[HackerNewsAdapter()]
-    )
+async def main():
+    ingestion = IngestionService([HackerNewsAdapter()])
     await ingestion.run()
 
-    db = Database()
-    items = db.get_daily_items()
+    news_items = ingestion.db.fetch_all()
 
-    if not items:
-        print("[INFO] No items found for summary")
+    if not news_items:
+        print("No news today.")
         return
 
-    summary = DailySummaryComposer.compose(items)
+    intelligence = build_intelligence(news_items)
 
-    # EMAIL
-    # EMAIL
-    if os.getenv("ENABLE_EMAIL", "true").lower() == "true":
-        html = markdown_to_html(summary)
-        await EmailService().send(
-            subject="Daily GenAI Digest",
-            html_body=html
-    )
-    print("📩 Email sent")
+    pdf_path = "intelligence_report.pdf"
+    PDFReportService.generate(intelligence, pdf_path)
 
+    telegram = TelegramService()
+    await telegram.send(intelligence, pdf_path)
 
-    # TELEGRAM
-    if os.getenv("ENABLE_TELEGRAM", "true").lower() == "true":
-        await TelegramService().send(summary)
+    email = EmailService()
+    await email.send(intelligence, pdf_path)
 
-        print("📬 Telegram sent")
-
-
-def main():
-    import sys
-
-    if len(sys.argv) < 2:
-        print("Usage: python run.py [genai-news|scheduler]")
-        return
-
-    mode = sys.argv[1]
-
-    if mode == "scheduler":
-        SchedulerService().start(
-            run_time=os.getenv("SCHEDULE_TIME", "09:20")
-        )
-    else:
-        asyncio.run(run_digest(mode))
-
+    print("✅ Intelligence pipeline completed")
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
